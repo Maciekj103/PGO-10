@@ -90,8 +90,11 @@ public class StreamApiTasks {
     }
 
     static List<String> uniqueCustomerNames(List<Order> orders) {
-        // TODO: zadanie 3
-        return List.of();
+        return orders.stream()
+                .sorted(Comparator.comparing(Order::customerName))
+                .map(Order::customerName)
+                .distinct()
+                .toList();
     }
 
     static List<String> soldProductNames(List<Order> orders) {
